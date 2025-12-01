@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Galeri Media</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------ GLOBAL STYLE ------------------------ */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f3f5fa;
+      color: #333;
+      overflow-x: hidden;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    
+    p {
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 40px;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* ------------------------ HEADER ------------------------ */
+    header {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #4a4aff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /* ------------------------ IMAGE GRID ------------------------ */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* ------------------------ VIDEO / AUDIO ------------------------ */
+    .media-box {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+    }
+
+    video, audio {
+      width: 100%;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    /* ------------------------ LINK CARDS ------------------------ */
+    .link-card {
+      display: block;
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+      transition: transform 0.2s, background 0.2s;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      background: #eef0ff;
+    }
+
+    /* ------------------------ FOOTER ------------------------ */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+      color: #666;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* ------------------------ MODAL IMAGE VIEW ------------------------ */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #imgModal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    #imgModal.close-area {
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    Club Malam 
+  </header>
+
+  <!-- ================= GALLERY GAMBAR ================= -->
+  <section>
+    
+    <p>Tempat khusus untuk kamu menikmati gambar-gambar menarik, dan ada sedikit taburan <b>hentainya</b> yang bisa bikin hati adem sekaligus berdegup kencang, dan membantu melepas capek setelah seharian beraktivitas.</p>
+    <h2>Koleksi Gambar</h2>
+
+    <div class="image-grid">
+      <!-- Template: cukup ganti URL -->
+      <img src="images/douyin1.jpeg" alt="Gambar 1">
+      <img src="douyin 2.jpeg" alt="Gambar 2">
+      <img src="douyin 3.jpeg" alt="Gambar 3">
+      <img src="douyin 4.jpeg" alt="Gambar 4">
+      <img src="douyin 5.jpeg" alt="Gambar 5">
+    </div>
+  </section>
+
+  <!-- ================= GALLERY VIDEO ================= -->
+  <section>
+    <h2>Koleksi Video</h2>
+
+    <div class="media-box">
+      <!-- Template video -->
+      <video controls>
+        <source src="URL-VIDEO-DISINI" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="media-box">
+      <video controls>
+        <source src="URL-VIDEO-DISINI" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- ================= AUDIO PLAYER ================= -->
+  <section>
+    <h2>Koleksi Audio</h2>
+
+    <div class="media-box">
+      <audio controls>
+        <source src="URL-AUDIO-DISINI" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="media-box">
+      <audio controls>
+        <source src="URL-AUDIO-DISINI" type="audio/mpeg">
+      </audio>
+    </div>
+  </section>
+
+  <!-- ================= LINK PENTING ================= -->
+  <section>
+    <h2>Link Penting</h2>
+
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 1</a>
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 2</a>
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 3</a>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    © 2025 Galeri Media Ryuuken-kun — Dibuat dengan ❤️ oleh Eira-san
+  </footer>
+
+  <!-- ================= MODAL IMAGE VIEW ================= -->
+  <div id="imgModal" class="close-area">
+    <img id="modalImg" src="">
+  </div>
+
+  <script>
+    // ------------------ MODAL PREVIEW GAMBAR ------------------
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+
+    document.querySelectorAll(".image-grid img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    // Klik area gelap untuk menutup modal
+    modal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+  </script>
+
+</body>
+</html>
