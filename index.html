@@ -3,133 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surat Pernikahan</title>
+  <title>Landing Page Galeri Media</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ------------------------ GLOBAL STYLE ------------------------ */
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: lightyellow;
       margin: 0;
-      padding: 20px;
+      font-family: "Poppins", sans-serif;
+      background: #f3f5fa;
+      color: #333;
+      overflow-x: hidden;
+      animation: fadeIn 0.8s ease;
     }
 
-    .container {
-      background: white;
-      max-width: 520px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    
+    p {
       text-align: center;
-      border: 3px solid #e8d3a2;
     }
 
     h2 {
-      font-family: 'Georgia', serif;
-      font-size: 28px;
-      color: #b28c3a;
-      margin-bottom: 5px;
+      margin-top: 40px;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
     }
 
-    .subtitle {
-      color: #6a6a6a;
-      font-size: 14px;
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* ------------------------ HEADER ------------------------ */
+    header {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #4a4aff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /* ------------------------ IMAGE GRID ------------------------ */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* ------------------------ VIDEO / AUDIO ------------------------ */
+    .media-box {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
       margin-bottom: 20px;
     }
 
-    /* FRAME FOTO ESTETIK */
-    .photo-frame {
-      width: 260px;
-      height: 260px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 4px solid #e9d8a6;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25),
-                  0 0 18px rgba(233, 216, 166, 0.6);
-      margin: auto;
-      margin-bottom: 15px;
+    video, audio {
+      width: 100%;
+      border-radius: 12px;
+      outline: none;
     }
 
-    .photo-frame img {
+    /* ------------------------ LINK CARDS ------------------------ */
+    .link-card {
+      display: block;
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+      transition: transform 0.2s, background 0.2s;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      background: #eef0ff;
+    }
+
+    /* ------------------------ FOOTER ------------------------ */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+      color: #666;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* ------------------------ MODAL IMAGE VIEW ------------------------ */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    input[type="file"], input[type="text"] {
-      margin-top: 10px;
-      padding: 7px 10px;
-      border-radius: 10px;
-      border: 1px solid #c7c7c7;
-      width: 90%;
+    #imgModal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      animation: fadeIn 0.3s ease;
     }
 
-    button {
-      margin-top: 15px;
-      padding: 10px 18px;
-      background: #c6a15c;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
+    #imgModal.close-area {
       cursor: pointer;
     }
 
-    button:hover {
-      background: #a8864d;
-    }
   </style>
 </head>
-
 <body>
 
-<div class="container" id="cardNormal">
-  <h2>Undangan Pernikahan</h2>
-  <p class="subtitle">Dengan hormat, kami mengundang Anda untuk menghadiri acara pernikahan berikut:</p>
+  <!-- ================= HEADER ================= -->
+  <header>
+    Club Malam 
+  </header>
 
-  <div class="photo-frame">
-    <img id="previewFoto" src="">
+  <!-- ================= GALLERY GAMBAR ================= -->
+  <section>
+    
+    <p>Tempat khusus untuk kamu menikmati gambar-gambar menarik, dan ada sedikit taburan <b>hentainya</b> yang bisa bikin hati adem sekaligus berdegup kencang, dan membantu melepas capek setelah seharian beraktivitas.</p>
+    <h2>Koleksi Gambar</h2>
+
+    <div class="image-grid">
+      <!-- Template: cukup ganti URL -->
+      <img src="douyin 1.jpeg" alt="Gambar 1">
+      <img src="douyin 2.jpeg" alt="Gambar 2">
+      <img src="douyin 3.jpeg" alt="Gambar 3">
+      <img src="douyin 4.jpeg" alt="Gambar 4">
+      <img src="douyin 5.jpeg" alt="Gambar 5">
+    </div>
+  </section>
+
+  <!-- ================= GALLERY VIDEO ================= -->
+  <section>
+    <h2>Koleksi Video</h2>
+
+    <div class="media-box">
+      <!-- Template video -->
+      <video controls>
+        <source src="URL-VIDEO-DISINI" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="media-box">
+      <video controls>
+        <source src="URL-VIDEO-DISINI" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- ================= AUDIO PLAYER ================= -->
+  <section>
+    <h2>Koleksi Audio</h2>
+
+    <div class="media-box">
+      <audio controls>
+        <source src="URL-AUDIO-DISINI" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="media-box">
+      <audio controls>
+        <source src="URL-AUDIO-DISINI" type="audio/mpeg">
+      </audio>
+    </div>
+  </section>
+
+  <!-- ================= LINK PENTING ================= -->
+  <section>
+    <h2>Link Penting</h2>
+
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 1</a>
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 2</a>
+    <a class="link-card" href="https://example.com" target="_blank">Contoh Link 3</a>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    © 2025 Galeri Media Ryuuken-kun — Dibuat dengan ❤️ oleh Eira-san
+  </footer>
+
+  <!-- ================= MODAL IMAGE VIEW ================= -->
+  <div id="imgModal" class="close-area">
+    <img id="modalImg" src="">
   </div>
 
-  <input type="file" accept="image/*" id="uploadFoto">
+  <script>
+    // ------------------ MODAL PREVIEW GAMBAR ------------------
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
 
-  <h3>Nama Mempelai</h3>
-  <p id="namaP">Belum diisi...</p>
-
-  <input type="text" id="inputNama" placeholder="Tulis nama kedua mempelai">
-
-  <button onclick="updateNama()">Simpan Nama</button>
-  <button onclick="downloadUndangan()">Download Undangan</button>
-</div>
-
-<!-- SCRIPT JAVASCRIPT -->
-<script>
-  const uploadFoto = document.getElementById("uploadFoto");
-  const preview = document.getElementById("previewFoto");
-
-  uploadFoto.addEventListener("change", () => {
-    const file = uploadFoto.files[0];
-    preview.src = URL.createObjectURL(file);
-  });
-
-  function updateNama() {
-    const nama = document.getElementById("inputNama").value;
-    document.getElementById("namaP").innerText = nama || "Belum diisi...";
-  }
-
-  function downloadUndangan() {
-    html2canvas(document.querySelector("#cardNormal"))
-      .then(canvas => {
-        const a = document.createElement("a");
-        a.download = "undangan-pernikahan.png";
-        a.href = canvas.toDataURL();
-        a.click();
+    document.querySelectorAll(".image-grid img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
       });
-  }
-</script>
+    });
 
-<!-- LIBRARY WAJIB UNTUK DOWNLOAD -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    // Klik area gelap untuk menutup modal
+    modal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+  </script>
 
 </body>
 </html>
